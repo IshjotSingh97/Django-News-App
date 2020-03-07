@@ -3,15 +3,19 @@ from django.http import HttpResponse
 import requests,json
 
 # Create your views here.
+
+def error_404_view(request, exception):
+    return render(request,'404.html')
+
 def index(request):
     return render(request,'index.html')
 
 def search(request):
-    if request.method == "POST":
+    if request.method == "GET":
         try:
-            q = request.POST['keyword'] 
+            q = request.GET['keyword'] 
             urlpart1 = "https://newsapi.org/v2/everything?q="
-            urlpart2 = "&from=2019-12-8&sortBy=publishedAt&pageSize=10&apiKey="
+            urlpart2 = "&sortBy=publishedAt&pageSize=12&language=en&apiKey="
             API_KEY = "09ea697cc4764ec0ab4987df2ad097fc"
             main_url = urlpart1+str(q)+urlpart2+API_KEY
              # fetching data in json format
@@ -24,10 +28,6 @@ def search(request):
                 "keyword":q,
                 "articles":articles
             }
-            print("search")
-            print(articles[0])
-            print(type(articles))
-            print(type(articles[0]))
             return render(request,'index.html',context=mydict)
         except:
             mydict = {
