@@ -54,7 +54,7 @@
             <div class="card-body">
                 <h5 class="card-title" style="text-align: center;">Search For Any News Worldwide</h5>
                 <p class="card-text" style="text-align: center;">Covering Major News Sources</p>
-                <input type="search" name="keyword" class="form-control" style="margin-bottom: 1rem;margin-top: 1rem;" placeholder="Search Here">
+                <input type="search" name="keyword" class="form-control" style="margin-bottom: 1rem;margin-top: 1rem;">
                 <button type="submit" class="btn btn-primary" style="display: block;margin: 0 auto;">Search</button>
             </div>
         </div>
@@ -62,13 +62,13 @@
     </div>
 
     {% if result == True %}
-    <div class="container-fluid" id="error" style="margin-top: 1rem;margin-bottom: 1rem;">
+    <div class="container" id="error" style="margin-top: 1rem;margin-bottom: 1rem;">
         <div class="row">
             {% for article in articles %}
-            <div class="col-md-4">
-                <div class="card" style="margin-top: 1rem;" >
-                    <img class="card-img-top img-fluid" src="{{article.urlToImage}}" alt="Card image cap" style="height: 375px;">
-                    <div class="card-body" style="height: 40rem;">
+            <div class="col-md-3">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{{article.urlToImage}}" alt="Card image cap">
+                    <div class="card-body">
                       <h5 class="card-title">{{article.title}}</h5>
                       <p class="card-text">{{article.content}}</p>
                       <a href="{{article.url}}" class="btn btn-primary">Read More</a>
